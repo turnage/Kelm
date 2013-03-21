@@ -62,7 +62,7 @@ package body kelm.sha_256 is
     -- -- returns: product chosen from sources by the engine
     function choose (x, y, z : u32) return u32 is
     begin
-        return (x and y) xor ((x xor trim_u32) and z);
+        return (x and y) xor ((not x) and z);
     end choose;
 
     -- The bits of the product represent the majority of x, y, and z, in a two
