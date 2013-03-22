@@ -3,13 +3,19 @@ with kelm.file;                  use kelm.file;
 
 package kelm.md5 is
 
+    -- Hash a file
+    function hash_file (name : string) return word_t;
+    
+    -- Hash a string
+    function hash_string (m : string) return word_t;
+
 private
 
-    type mda5_t is record
+    type md5_t is record
         blocks                  : integer; -- total blocks in m; N
         place                   : integer; -- current block
         addendum                : u64; -- 64bit representation of m's length
-        digest                  : word_t(1..8); -- hash digest (256 bits)
+        digest                  : word_t(1..4); -- hash digest (256 bits)
         file                    : file_t; -- file operator
     end record;
 
@@ -35,7 +41,14 @@ private
 
     -- Initial values for hash calculation
     hash_ref : constant word_t := (
-        16#01234567#, 16#89abcdef#, 16#fedcba98#, 16#76543210#
+        16#67452301#, 16#efcdab89#, 16#98badcfe#, 16#10325476#
+    );
+
+    S : array (1..4, 1..4) of u32 := (
+        (7, 12, 17, 22),
+        (5,  9, 14, 20),
+        (4, 11, 16, 23),
+        (6, 10, 15, 21)
     );
 
     -- Bitwise operations special for md5
@@ -51,5 +64,11 @@ private
     function round_three (a, b, c, d, k, s, co : u32) return u32;
     function round_four (a, b, c, d, k, s, co : u32) return u32;
     -- End round operations special for md5
+    
+    -- Update the hash values for one message block
+    function hash_round (let, sch : word_t) return word_t;
+    
+    -- Prepare a module for hashing
+    function make_md5 (m : string) return md5_t;
 
 end kelm.md5;
