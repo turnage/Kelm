@@ -63,8 +63,8 @@ private
     -- Construct a schedule to calculate the digest with
     function build_schedule (block : word_t) return word_t;
 
-    -- Calculate one hashing round
-    function hash_round (let : word_t; sch : word_t) return word_t;
+    -- Update the hash values for one block
+    function hash_round (let, sch : word_t) return word_t;
 
     -- Prepare an sha module for a string input (command line arg)
     function make_sha_256 (m : string) return sha_256_t;

@@ -137,11 +137,11 @@ package body kelm.sha_256 is
     
     -- Calculate one round (complete process for one M[i]), and update the
     -- intermediate hash values for it.
-    -- -- called: in algorithm hubs (file or string)
+    -- -- called: in algorithm hub
     -- -- let: letters; intermediate hash values
     -- -- sch: schedule for the current message block
     -- -- returns: resulting values of the hash calculation
-    function hash_round (let : word_t; sch : word_t) return word_t is
+    function hash_round (let, sch : word_t) return word_t is
         temp : word_t(1..8);
         t1, t2, a, b, c, d, e, f, g, h : u32 := 0;
     begin
@@ -179,10 +179,9 @@ package body kelm.sha_256 is
         return temp;
     end hash_round;
 
-    -- Prepare an sha module for a string input (command line arg). The string
-    -- has a maximum length of 1024 characters. Padding as made according to the
-    -- NIST specification for sha256.
-    -- -- called: in algorithm hubs prior to hash calculation
+    -- Prepare an sha module for a string input (command line arg). Padding as
+    -- made according to the NIST specification for sha256.
+    -- -- called: in algorithm hub
     -- -- m: stringto parse and prepare metadata for
     -- -- returns: an appropriately configured sha module
     function make_sha_256 (m : string) return sha_256_t is
