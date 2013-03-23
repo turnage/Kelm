@@ -7,7 +7,8 @@ A set of simple reference implementations.
 Really, just look at it. My implementations meet test vectors, but they are slow
 and pay no attention to side channel attacks or the like. I intend for people to
 refer to it when studying and learning the algorithms it implements, because the
-code is simple and self documenting.
+code is simple and self documenting. It should be noted however, that I may well
+have errors test vectors don't catch.
 
 ## Can I build Kelm?
 
