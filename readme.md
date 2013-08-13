@@ -35,10 +35,3 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
 OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
 TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
 THIS SOFTWARE.
-
-## Contribution
-
-I'm not an expert, just learning like you probably are if you're interested in
-helping with Kelm, so don't worry about barrier of entry. If you'd like to help
-by contributing an implementation yourself or fixing up mine, submit a pull
-request on github, but file an issue first so I know you're working on that.
